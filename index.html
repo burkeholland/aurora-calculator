@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Aurora Calculator</title>
+<title>Postrboard Calculator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after {
   margin: 0;
@@ -15,85 +15,64 @@
 }
 
 :root {
-  --lavender: #d4c5f9;
-  --lavender-light: #e8dffb;
-  --mint: #b8f0d8;
-  --mint-light: #c8f5e4;
-  --rose: #f5c2d0;
-  --rose-light: #fad6e0;
-  --coral: #f7a8b8;
-  --purple-deep: #b5a0e0;
-  --purple-button: #c9b8f0;
-  --white-glass: rgba(255, 255, 255, 0.72);
-  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.06);
-  --shadow-button: 0 6px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-  --shadow-button-pressed: 0 2px 6px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --bg-main: #fafafa;
+  --bg-secondary: #f1f5f9;
+  --bg-panel: #e2e8f0;
+  --border: #cbd5e1;
+  --fg: #111827;
+  --fg-muted: #64748b;
+  --accent-blue: #0284c7;
+  --dark-blue: #0c4a6e;
+  --medium-blue: #0369a1;
+  --accent-orange: #d97706;
+  --accent-green: #4d7c0f;
+  --selection: #fed7aa60;
+  --subtle: #94a3b8;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-button: 0 4px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-button-pressed: 0 1px 4px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
 html, body {
   height: 100%;
   overflow: hidden;
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1a1a2e;
+  background: var(--bg-main);
   position: relative;
 }
 
-/* Animated Aurora Background */
+/* Paper/Corkboard Background */
 .aurora-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  background: var(--bg-main);
 }
 
 .aurora-bg::before {
   content: '';
   position: absolute;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
+  inset: 0;
   background: 
-    radial-gradient(ellipse at 20% 50%, #d8b4fe 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, #99f6e4 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, #fda4af 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 60%, #c4b5fd 0%, transparent 40%),
-    radial-gradient(ellipse at 30% 30%, #a7f3d0 0%, transparent 45%);
-  animation: auroraShift 12s ease-in-out infinite alternate;
+    radial-gradient(ellipse at 30% 20%, rgba(254, 215, 170, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(2, 132, 199, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(226, 232, 240, 0.3) 0%, transparent 70%);
 }
 
 .aurora-bg::after {
   content: '';
   position: absolute;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
-  background: 
-    radial-gradient(ellipse at 60% 40%, #fbcfe8 0%, transparent 45%),
-    radial-gradient(ellipse at 25% 70%, #a5f3fc 0%, transparent 50%),
-    radial-gradient(ellipse at 75% 75%, #e9d5ff 0%, transparent 45%);
-  animation: auroraShift2 15s ease-in-out infinite alternate;
-  opacity: 0.7;
-}
-
-@keyframes auroraShift {
-  0% { transform: translate(0%, 0%) rotate(0deg); }
-  25% { transform: translate(5%, -3%) rotate(2deg); }
-  50% { transform: translate(-3%, 5%) rotate(-1deg); }
-  75% { transform: translate(4%, 2%) rotate(1.5deg); }
-  100% { transform: translate(-5%, -2%) rotate(-2deg); }
-}
-
-@keyframes auroraShift2 {
-  0% { transform: translate(0%, 0%) rotate(0deg) scale(1); }
-  33% { transform: translate(-4%, 3%) rotate(-2deg) scale(1.02); }
-  66% { transform: translate(3%, -4%) rotate(1.5deg) scale(0.98); }
-  100% { transform: translate(2%, 5%) rotate(-1deg) scale(1.01); }
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.018;
+  mix-blend-mode: multiply;
 }
 
 /* Calculator Container */
@@ -104,21 +83,16 @@ body {
   max-width: 380px;
   padding: 28px 20px 20px;
   border-radius: 40px;
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: var(--bg-main);
+  border: 1.5px solid var(--bg-panel);
   box-shadow: 
-    0 24px 80px rgba(0, 0, 0, 0.08),
-    0 8px 32px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 20px 60px rgba(0, 0, 0, 0.06),
+    0 6px 20px rgba(0, 0, 0, 0.03);
 }
 
 /* Display */
 .display {
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--bg-secondary);
   border-radius: 24px;
   padding: 20px 24px;
   margin-bottom: 20px;
@@ -127,15 +101,15 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--border);
   overflow: hidden;
 }
 
 .display .expression {
-  font-size: 15px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
   font-weight: 400;
-  color: rgba(100, 80, 140, 0.6);
+  color: var(--fg-muted);
   margin-bottom: 8px;
   min-height: 20px;
   text-align: right;
@@ -146,9 +120,10 @@ body {
 }
 
 .display .current {
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 48px;
   font-weight: 300;
-  color: #2d1b4e;
+  color: var(--fg);
   letter-spacing: -1.5px;
   text-align: right;
   width: 100%;
@@ -179,7 +154,7 @@ body {
   aspect-ratio: 1;
   border: none;
   border-radius: 50%;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
@@ -202,52 +177,65 @@ body {
 @media (hover: hover) {
   .btn:hover {
     transform: scale(1.04);
-    filter: brightness(1.03);
   }
   .btn:hover:active {
     transform: scale(0.92);
   }
+  .btn-number:hover {
+    background: var(--bg-secondary);
+  }
+  .btn-utility:hover {
+    background: #d1d9e4;
+  }
+  .btn-operator:hover {
+    background: #0369a1;
+  }
+  .btn-equals:hover {
+    background: #083d5a;
+  }
 }
 
-/* Number Buttons - soft lavender */
+/* Number Buttons */
 .btn-number {
-  background: linear-gradient(145deg, #e8dffb, #d8ccf5);
-  color: #3d2b6b;
-  box-shadow: var(--shadow-button), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  background: #ffffff;
+  color: var(--fg);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-button);
 }
 
-/* Utility Buttons - mint */
+/* Utility Buttons (C, ±, %) */
 .btn-utility {
-  background: linear-gradient(145deg, #c8f5e4, #a8ecd0);
-  color: #1a5c3a;
-  box-shadow: var(--shadow-button), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  background: var(--bg-panel);
+  color: var(--medium-blue);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-button);
+  font-weight: 600;
 }
 
-/* Operator Buttons - rose/coral */
+/* Operator Buttons (+, -, ×, ÷) */
 .btn-operator {
-  background: linear-gradient(145deg, #fad6e0, #f5b8c8);
-  color: #6b2040;
-  box-shadow: var(--shadow-button), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  background: var(--accent-blue);
+  color: #ffffff;
+  box-shadow: var(--shadow-button), 0 2px 8px rgba(2, 132, 199, 0.2);
 }
 
 .btn-operator.active {
-  background: linear-gradient(145deg, #f5a0b8, #ec8aa8);
-  box-shadow: var(--shadow-button), inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 0 20px rgba(245, 160, 184, 0.4);
+  background: var(--dark-blue);
+  box-shadow: var(--shadow-button), 0 0 16px rgba(12, 74, 110, 0.3);
 }
 
-/* Equals Button - deeper purple */
+/* Equals Button */
 .btn-equals {
-  background: linear-gradient(160deg, #c9b8f0, #a78bde);
-  color: #fff;
+  background: var(--dark-blue);
+  color: #ffffff;
   font-size: 28px;
   font-weight: 600;
-  box-shadow: 0 8px 24px rgba(167, 139, 222, 0.35), 
-              0 3px 8px rgba(0, 0, 0, 0.06),
-              inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 20px rgba(12, 74, 110, 0.25), 
+              0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .btn-equals:active {
-  background: linear-gradient(160deg, #b5a0e0, #9575cd);
+  background: #083344;
 }
 
 /* Zero Button - wide pill */
@@ -271,7 +259,7 @@ body {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(255,255,255,0.3) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
