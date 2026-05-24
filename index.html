@@ -235,15 +235,12 @@ body {
   box-shadow: var(--shadow-button), inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 0 20px rgba(245, 160, 184, 0.4);
 }
 
-/* Equals Button - deeper purple, tall pill */
+/* Equals Button - deeper purple */
 .btn-equals {
   background: linear-gradient(160deg, #c9b8f0, #a78bde);
   color: #fff;
   font-size: 28px;
   font-weight: 600;
-  border-radius: 32px;
-  grid-row: span 2;
-  aspect-ratio: auto;
   box-shadow: 0 8px 24px rgba(167, 139, 222, 0.35), 
               0 3px 8px rgba(0, 0, 0, 0.06),
               inset 0 1px 2px rgba(255, 255, 255, 0.4);
@@ -406,10 +403,11 @@ body {
     <button class="btn btn-number" data-action="number" data-value="1">1</button>
     <button class="btn btn-number" data-action="number" data-value="2">2</button>
     <button class="btn btn-number" data-action="number" data-value="3">3</button>
-    <button class="btn btn-equals" data-action="equals">=</button>
+    <button class="btn btn-operator" data-action="operator" data-value="+">+</button>
 
     <button class="btn btn-number btn-zero" data-action="number" data-value="0">0</button>
     <button class="btn btn-number btn-decimal" data-action="decimal">.</button>
+    <button class="btn btn-equals" data-action="equals">=</button>
   </div>
 </div>
 
