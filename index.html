@@ -958,7 +958,7 @@ body.dark .btn-equals {
           previousInput = '';
           shouldResetDisplay = true;
           updateDisplay();
-          if (!silent) { emitParticles(); pulseCard(); }
+          if (!silent) { emitParticles(); }
           return;
         }
         result = prev / curr;
@@ -977,7 +977,6 @@ body.dark .btn-equals {
 
     if (!silent) {
       emitParticles();
-      pulseCard();
     }
   }
 
